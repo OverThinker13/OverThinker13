@@ -27,10 +27,10 @@ jobs:
             .github/assets/github-contribution-grid-snake.svg
             .github/assets/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-      - name: Commit & push to main directly
+      - name: Force update snake heatmap
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .github/assets/
-          git diff-index --quiet HEAD -- .github/assets/ || git commit -m "chore: sync snake heatmap to main [skip ci]"
-          git push origin HEAD:main
+          git commit -m "force: sync snake heatmap [skip ci]" || echo "No changes"
+          git push origin HEAD:main --force
